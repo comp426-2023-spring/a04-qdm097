@@ -36,10 +36,10 @@ app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', fun
 })
 
 app.use(function(req, res, next) {
-	var error = new Error('Not Found')
+	var error = new Error('NOT FOUND')
 	error.status = 404
 	res.status=404
-	res.send('404 Not Found')
+	res.send('404 NOT FOUND')
 })
 
 args['port'] ??= 5000
