@@ -15,12 +15,12 @@ app.get('/app/', function(req, res){
 	res.send("200 OK")
 })
 
-app.get('/rps/', function(req, res){
+app.get('/app/rps/', function(req, res){
 	res.status=200
 	res.send(rps())
 })
 
-app.get('/rpsls/', function(req, res){
+app.get('/app/rpsls/', function(req, res){
 	res.status=200
 	res.send(rpsls())
 })
