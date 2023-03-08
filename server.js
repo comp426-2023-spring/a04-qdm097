@@ -7,7 +7,7 @@ const args = minimist(process.argv.slice(2), {
 })
 
 import express from 'express'
-import {rps, rpsls} from './rpsls.js'
+import {rps, rpsls} from './lib/rpsls.js'
 var app = express()
 
 app.get('/app/', function(req, res){
@@ -37,7 +37,8 @@ app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', fun
 
 app.use(function(req, res, next) {
 	var error = new Error('Not Found')
-	error.status = 404;
+	error.status = 404
+	res.status=404
 	res.send('404 Not Found')
 })
 
