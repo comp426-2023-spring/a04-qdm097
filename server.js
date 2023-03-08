@@ -35,9 +35,8 @@ app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', fun
 	res.send(rpsls(req.params.shot))
 })
 
-app.use(function(req, res, next) {
-	var error = new Error('NOT FOUND')
-	error.status = 404
+
+app.get('/*', function(req, res){
 	res.status=404
 	res.send('404 NOT FOUND')
 })
