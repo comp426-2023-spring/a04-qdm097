@@ -9,6 +9,7 @@ const args = minimist(process.argv.slice(2), {
 import express from 'express'
 import {rps, rpsls} from './lib/rpsls.js'
 var app = express()
+app.use(express.json())
 
 app.get('/app', function(req, res){
 	res.status = 200
