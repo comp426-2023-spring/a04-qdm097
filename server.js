@@ -10,17 +10,17 @@ import express from 'express'
 import {rps, rpsls} from './lib/rpsls.js'
 var app = express()
 
-app.get('/app/', function(req, res){
+app.get('/app', function(req, res){
 	res.status = 200
 	res.send("200 OK")
 })
 
-app.get('/app/rps/', function(req, res){
+app.get('/app/rps', function(req, res){
 	res.status=200
 	res.send(rps())
 })
 
-app.get('/app/rpsls/', function(req, res){
+app.get('/app/rpsls', function(req, res){
 	res.status=200
 	res.send(rpsls())
 })
@@ -36,7 +36,7 @@ app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', fun
 })
 
 
-app.get('/*', function(req, res){
+app.get('*', function(req, res){
 	res.status=404
 	res.send('404 NOT FOUND')
 })
