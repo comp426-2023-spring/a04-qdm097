@@ -36,14 +36,14 @@ app.get('/app/rpsls/play', (req, res) => {
 });
 
 // json params
-app.get('/app/rps/play', (req, res) => {
+app.get('/app/rps/play/:shot', (req, res) => {
 	console.log("json body rps")
 	var tst = rps(req.body.shot)
 	console.log(JSON.stringify(tst))
 	res.status(200).send(rps(req.body.shot));
 });
 
-app.get('/app/rpsls/play', (req, res) => {
+app.get('/app/rpsls/play/:shot', (req, res) => {
 	console.log("json body rpsls")
 	var tst = rpsls(req.body.shot) 
 	console.log(JSON.stringify(tst))
