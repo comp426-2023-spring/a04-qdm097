@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/comp426-2023-spring/a04-qdm097.git"
   },
+  "directories": {
+	  "lib": "lib"
+  },
   "author": "qdm097",
   "license": "GPL-3.0",
   "bugs": {
