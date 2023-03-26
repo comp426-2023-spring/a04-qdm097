@@ -6,10 +6,12 @@ const args = minimist(process.argv.slice(2), {
 	int: ['port']
 })
 
+// Some help from https://github.com/comp426-2023-spring/a04-sadieamato/blob/main/server.js
 import express from 'express'
 import {rps, rpsls} from './lib/rpsls.js'
 var app = express()
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.get('/app', function(req, res){
 	res.status = 200
