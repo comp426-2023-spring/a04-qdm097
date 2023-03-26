@@ -28,26 +28,13 @@ app.get('/app/rpsls', (req, res) => {
 
 // url encoding params
 app.get('/app/rps/play', (req, res) => {
-	res.status(200).send(rps(req.query.shot));
+	var ffs = req.query.shot || req.body.shot
+	res.status(200).send(rps(ffs));
 });
 
 app.get('/app/rpsls/play', (req, res) => {
-	res.status(200).send(rpsls(req.query.shot));
-});
-
-// json params
-app.get('/app/rps/play', (req, res) => {
-	console.log("json body rps");
-	var tst = rps(req.body.shot);
-	console.log(JSON.stringify(tst));
-	res.status(200).send(rps(req.body.shot));
-});
-
-app.get('/app/rpsls/play', (req, res) => {
-	console.log("json body rpsls");
-	var tst = rpsls(req.body.shot);
-	console.log(JSON.stringify(tst));
-	res.status(200).send(tst);
+	var ffs = req.query.shot || req.body.shot
+	res.status(200).send(rpsls(ffs));
 });
 
 // params
