@@ -14,34 +14,47 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.get('/app', function(req, res){
-	res.status = 200
-	res.send("200 OK")
+	res.status(200).send("200 OK")
 })
 
 app.get('/app/rps', function(req, res){
-	res.status=200
-	res.send(rps())
+	res.status(200).send(rps())
 })
 
 app.get('/app/rpsls', function(req, res){
-	res.status=200
-	res.send(rpsls())
+	res.status(200).send(rpsls())
 })
 
+// JSON params
+app.get('/app/rps/play', function(req, res){
+	res.status(200).send(rps(req.query.shot))
+})
+
+app.get('/app/rpsls/play', function(req, res){
+	res.status(200).send(rpsls(req.query.shot))
+})
+
+// query params
 app.get('/app/rps/play/:shot((paper)|(rock)|(scissors))', function(req, res){
-	res.status=200
-	res.send(rps(req.params.shot))
+	res.status(200).send(rps(req.body.shot))
 })
 
 app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', function(req, res){
-	res.status=200
-	res.send(rpsls(req.params.shot))
+	res.status(200).send(rpsls(req.body.shot))
+})
+
+// params
+app.get('/app/rps/play/:shot((paper)|(rock)|(scissors))', function(req, res){
+	res.status(200).send(rps(req.params.shot))
+})
+
+app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', function(req, res){
+	res.status(200).send(rpsls(req.params.shot))
 })
 
 
 app.get('*', function(req, res){
-	res.status=404
-	res.send('404 NOT FOUND')
+	res.status(404).send('404 NOT FOUND')
 })
 
 args['port'] ??= 5000
