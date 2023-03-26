@@ -37,19 +37,23 @@ app.get('/app/rpsls/play', (req, res) => {
 
 // query params
 app.get('/app/rps/play/:shot', (req, res) => {
+	console.log("json body rps")
 	res.status(200).send(JSON.stringify(rps(req.body.shot)))
 })
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
+	console.log("json body rpsls")
 	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
 })
 
 // params
 app.get('/app/rps/play/:shot', (req, res) => {
+	console.log("param rps")
 	res.status(200).send(JSON.stringify(rps(req.params.shot)))
 })
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
+	console.log("param rpsls")
 	res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
 })
 
