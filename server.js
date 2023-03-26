@@ -11,7 +11,7 @@ const port = args.port || 5000
 
 const app = express()
 app.use(express.json())
-//app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}))
 
 
 app.get('/app', (req, res) => {
@@ -19,46 +19,46 @@ app.get('/app', (req, res) => {
 })
 
 app.get('/app/rps', (req, res) => {
-	res.status(200).send(JSON.stringify(rps()))
+	res.status(200).send(rps())
 })
 
 app.get('/app/rpsls', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls()))
+	res.status(200).send(rpsls())
 })
 
 // JSON params
 app.get('/app/rps/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rps(req.query.shot)))
+	res.status(200).send(rps(req.query.shot))
 })
 
 app.get('/app/rpsls/play', (req, res) => {
-	res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
+	res.status(200).send(rpsls(req.query.shot))
 })
 
 // query params
 app.get('/app/rps/play/:shot', (req, res) => {
 	console.log("json body rps")
 	console.log(req.body.shot)
-	res.status(200).send(JSON.stringify(rps(req.body.shot)))
+	res.status(200).send(rps(req.body.shot))
 })
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
 	console.log("json body rpsls")
 	console.log(req.body.shot)
-	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
+	res.status(200).send(rpsls(req.body.shot))
 })
 
 // params
 app.get('/app/rps/play/:shot', (req, res) => {
 	console.log("param rps")
 	console.log(req.params.shot)
-	res.status(200).send(JSON.stringify(rps(req.params.shot)))
+	res.status(200).send(rps(req.params.shot))
 })
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
 	console.log("param rpsls")
 	console.log(req.params.shot)
-	res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
+	res.status(200).send(rpsls(req.params.shot))
 })
 
 
