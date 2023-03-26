@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 import minimist from 'minimist'
-
-const args = minimist(process.argv.slice(2), {
-	int: ['port']
-})
-
-// Some help from https://github.com/comp426-2023-spring/a04-sadieamato/blob/main/server.js
 import express from 'express'
 import {rps, rpsls} from './lib/rpsls.js'
+
+const args = minimist(process.argv.slice(2))
+var port = args.port || 5000
+
+// Some help from https://github.com/comp426-2023-spring/a04-sadieamato/blob/main/server.js
+
 var app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -57,5 +57,6 @@ app.get('*', function(req, res){
 	res.status(404).send('404 NOT FOUND')
 })
 
-args['port'] ??= 5000
-app.listen(args['port'])
+app.listen(port, () => {
+	console.log(`Runnning on port ${port}`)
+}
