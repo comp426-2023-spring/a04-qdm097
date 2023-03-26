@@ -29,11 +29,27 @@ app.get('/app/rpsls', (req, res) => {
 // url encoding params
 app.get('/app/rps/play', (req, res) => {
 	var ffs = req.query.shot || req.body.shot
+	console.log("here")
 	res.status(200).send(rps(ffs));
 });
 
 app.get('/app/rpsls/play', (req, res) => {
 	var ffs = req.query.shot || req.body.shot
+	console.log("here")
+	res.status(200).send(rpsls(ffs));
+});
+
+
+// json?
+app.get('/app/rps/play/', (req, res) => {
+	var ffs = req.body.shot
+	console.log("here_json?")
+	res.status(200).send(rps(ffs));
+});
+
+app.get('/app/rpsls/play/', (req, res) => {
+	var ffs = req.body.shot
+	console.log("here_json?")
 	res.status(200).send(rpsls(ffs));
 });
 
