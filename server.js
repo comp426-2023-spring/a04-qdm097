@@ -28,29 +28,21 @@ app.get('/app/rpsls', (req, res) => {
 
 // url encoding params
 app.get('/app/rps/play', (req, res) => {
-	var ffs = req.query.shot || req.body.shot
-	console.log("here")
-	res.status(200).send(rps(ffs));
+	res.status(200).send(rps(req.query.shot));
 });
 
 app.get('/app/rpsls/play', (req, res) => {
-	var ffs = req.query.shot || req.body.shot
-	console.log("here")
-	res.status(200).send(rpsls(ffs));
+	res.status(200).send(rpsls(req.query.shot));
 });
 
 
-// json?
-app.get('/app/rps/play/', (req, res) => {
-	var ffs = req.body.shot
-	console.log("here_json?")
-	res.status(200).send(rps(ffs));
+// json body params
+app.post('/app/rps/play/', (req, res) => {
+	res.status(200).send(rps(req.body.shot));
 });
 
-app.get('/app/rpsls/play/', (req, res) => {
-	var ffs = req.body.shot
-	console.log("here_json?")
-	res.status(200).send(rpsls(ffs));
+app.post('/app/rpsls/play/', (req, res) => {
+	res.status(200).send(rpsls(req.body.shot));
 });
 
 // params
