@@ -15,53 +15,49 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/app', (req, res) => {
-	res.status(200).send("200 OK")
+	res.status(200).send("200 OK");
 });
 
 app.get('/app/rps', (req, res) => {
-	res.status(200).send(rps())
+	res.status(200).send(rps());
 });
 
 app.get('/app/rpsls', (req, res) => {
-	res.status(200).send(rpsls())
+	res.status(200).send(rpsls());
 });
 
-// JSON params
+// url encoding params
 app.get('/app/rps/play', (req, res) => {
-	res.status(200).send(rps(req.query.shot))
+	res.status(200).send(rps(req.query.shot));
 });
 
 app.get('/app/rpsls/play', (req, res) => {
-	res.status(200).send(rpsls(req.query.shot))
+	res.status(200).send(rpsls(req.query.shot));
 });
 
-// query params
+// json params
 app.get('/app/rps/play', (req, res) => {
-	res.status(200).send(rps(req.body.shot))
+	res.status(200).send(rps(req.body.shot));
 });
 
 app.get('/app/rpsls/play', (req, res) => {
-	res.status(200).send(rpsls(req.body.shot))
+	res.status(200).send(rpsls(req.body.shot));
 });
 
 // params
 app.get('/app/rps/play/:shot', (req, res) => {
-	console.log("param rps")
-	console.log(req.params.shot)
-	res.status(200).send(rps(req.params.shot))
+	res.status(200).send(rps(req.params.shot));
 });
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
-	console.log("param rpsls")
-	console.log(req.params.shot)
-	res.status(200).send(rpsls(req.params.shot))
+	res.status(200).send(rpsls(req.params.shot));
 });
 
 
 app.get('*', (req, res) => {
-	res.status(404).send('404 NOT FOUND')
+	res.status(404).send('404 NOT FOUND');
 });
 
 app.listen(port, () => {
-	console.log(`Runnning on port ${port}`)
+	console.log(`Runnning on port ${port}`);
 });
