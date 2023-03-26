@@ -5,55 +5,55 @@ import express from 'express'
 import {rps, rpsls} from './lib/rpsls.js'
 
 const args = minimist(process.argv.slice(2))
-var port = args.port || 5000
+const port = args.port || 5000
 
 // Some help from https://github.com/comp426-2023-spring/a04-sadieamato/blob/main/server.js
 
-var app = express()
+const app = express()
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+//app.use(express.urlencoded({extended:true}))
 
-app.get('/app', function(req, res){
+app.get('/app', (req, res) => {
 	res.status(200).send("200 OK")
 })
 
-app.get('/app/rps', function(req, res){
+app.get('/app/rps', (req, res) => {
 	res.status(200).send(JSON.stringify(rps()))
 })
 
-app.get('/app/rpsls', function(req, res){
+app.get('/app/rpsls', (req, res) => {
 	res.status(200).send(JSON.stringify(rpsls()))
 })
 
 // JSON params
-app.get('/app/rps/play', function(req, res){
+app.get('/app/rps/play', (req, res) => {
 	res.status(200).send(JSON.stringify(rps(req.query.shot)))
 })
 
-app.get('/app/rpsls/play', function(req, res){
+app.get('/app/rpsls/play', (req, res) => {
 	res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
 })
 
 // query params
-app.get('/app/rps/play/:shot((paper)|(rock)|(scissors))', function(req, res){
+app.get('/app/rps/play/:shot', (req, res) => {
 	res.status(200).send(JSON.stringify(rps(req.body.shot)))
 })
 
-app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', function(req, res){
+app.get('/app/rpsls/play/:shot', (req, res) => {
 	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
 })
 
 // params
-app.get('/app/rps/play/:shot((paper)|(rock)|(scissors))', function(req, res){
+app.get('/app/rps/play/:shot', (req, res) => {
 	res.status(200).send(JSON.stringify(rps(req.params.shot)))
 })
 
-app.get('/app/rpsls/play/:shot((paper)|(rock)|(scissors)|(lizard)|(spock))', function(req, res){
+app.get('/app/rpsls/play/:shot', (req, res) => {
 	res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
 })
 
 
-app.get('*', function(req, res){
+app.get('*', (req, res) => {
 	res.status(404).send('404 NOT FOUND')
 })
 
