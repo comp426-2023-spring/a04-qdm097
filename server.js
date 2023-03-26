@@ -13,63 +13,61 @@ const app = express()
 app.use(express.json())
 //app.use(express.urlencoded({extended:true}))
 
-var i = 0
 
 app.get('/app', (req, res) => {
+	console.log("here1")
 	res.status(200).send("200 OK")
 })
-console.log(i); i++;
 
 app.get('/app/rps', (req, res) => {
+	console.log("here2")
 	res.status(200).send(JSON.stringify(rps()))
 })
-console.log(i); i++;
 
 app.get('/app/rpsls', (req, res) => {
+	console.log("here3")
 	res.status(200).send(JSON.stringify(rpsls()))
 })
-console.log(i); i++;
 
 // JSON params
 app.get('/app/rps/play', (req, res) => {
+	console.log("here4")
 	res.status(200).send(JSON.stringify(rps(req.query.shot)))
 })
-console.log(i); i++;
 
 app.get('/app/rpsls/play', (req, res) => {
+	console.log("here5")
 	res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
 })
-console.log(i); i++;
 
 // query params
 app.get('/app/rps/play/:shot', (req, res) => {
+	console.log("here6")
 	res.status(200).send(JSON.stringify(rps(req.body.shot)))
 })
-console.log(i); i++;
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
+	console.log("here7")
 	res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
 })
-console.log(i); i++;
 
 // params
 app.get('/app/rps/play/:shot', (req, res) => {
+	console.log("here8")
 	res.status(200).send(JSON.stringify(rps(req.params.shot)))
 })
-console.log(i); i++;
 
 app.get('/app/rpsls/play/:shot', (req, res) => {
+	console.log("here9")
 	res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
 })
-console.log(i); i++;
 
 
 app.get('*', (req, res) => {
+	console.log("here10")
 	res.status(404).send('404 NOT FOUND')
 })
-console.log(i); i++;
 
 app.listen(port, () => {
 	console.log(`Runnning on port ${port}`)
 })
-console.log(i); i++;
